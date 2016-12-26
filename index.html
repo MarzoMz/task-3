@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.js"></script>
+  <script>
+    mocha.setup('bdd');
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/2.0.0/chai.js"></script>
+  <script>
+    var assert = chai.assert;
+  </script>
+</head>
+
+<body>
+
+  <script>
+// difference для расчёта разности двух массивов (множеств)
+function difference (a, b) {
+  var diff = [];
+  for (var i = 0; i < a.length; i++) {
+    if (b.indexOf(a[i]) == -1) {
+      diff.push(a[i]);
+    }
+  }
+  return diff;
+}
+
+// intersection для расчёта переcечечения произвольного
+// числа массивов
+function intersection () {
+  if (arguments.length == 0) {
+    return [];
+    }
+
+  var int = [];
+// выполняется поиск каждого элемента первого аргумента
+// в остальных аргументах
+  for (var a = 0; a < arguments[0].length; a++) {
+    for (var i = 0; i < arguments.length; i++) {
+      var arrNext = arguments[i];
+      if (arrNext.indexOf(arguments[0][a]) == -1) {
+      break;
+      }
+      if (i == arguments.length - 1) {
+        int.push(arguments[0][a]);
+      }
+    }
+  }
+  return int;
+ }
+
+  </script>
+
+
+  <script src="test.js"></script>
+  <div id="mocha"></div>
+  <script>
+    mocha.run();
+  </script>
+
+</body>
+</html>
